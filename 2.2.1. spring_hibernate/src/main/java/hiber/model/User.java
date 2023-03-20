@@ -5,6 +5,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
+   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+   @PrimaryKeyJoinColumn
+   private Car car;
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
