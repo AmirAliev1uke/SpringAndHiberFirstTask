@@ -5,8 +5,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-   @PrimaryKeyJoinColumn
+   @OneToOne()
+   @JoinColumn(name = "id")
    private Car car;
 
    @Id
@@ -29,6 +29,7 @@ public class User {
       this.lastName = lastName;
       this.email = email;
    }
+
 
    public Long getId() {
       return id;
@@ -60,5 +61,16 @@ public class User {
 
    public void setEmail(String email) {
       this.email = email;
+   }
+
+   @Override
+   public String toString() {
+      return "User{" +
+              "id=" + id +
+              ", firstName='" + firstName + '\'' +
+              ", lastName='" + lastName + '\'' +
+              ", email='" + email + '\'' +
+              ", car=" + car +
+              '}';
    }
 }

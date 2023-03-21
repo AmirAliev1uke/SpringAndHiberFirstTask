@@ -5,16 +5,16 @@ import javax.persistence.*;
 @Entity
 @Table(name = "car")
 public class Car {
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "id")
-    private User user;
+//    @OneToOne(mappedBy = "car")
+//    @JoinColumn
+//    private User user;
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "model")
     private String model;
-    @Column(name ="seies")
+    @Column(name ="series")
     private int series;
 
     public Car(String model, int series) {
@@ -46,5 +46,14 @@ public class Car {
 
     public void setSeries(int series) {
         this.series = series;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", series=" + series +
+                '}';
     }
 }

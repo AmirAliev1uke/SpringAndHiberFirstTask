@@ -11,8 +11,7 @@ import java.util.List;
 
 public class MainApp {
    public static void main(String[] args) throws SQLException {
-      AnnotationConfigApplicationContext context = 
-            new AnnotationConfigApplicationContext(AppConfig.class);
+      AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
       UserService userService = context.getBean(UserService.class);
 
@@ -29,6 +28,16 @@ public class MainApp {
          System.out.println("Email = "+user.getEmail());
          System.out.println();
       }
+
+      List <Car> cars = userService.listCars();
+      for (Car car : cars) {
+         System.out.println("Id = "+car.getId());
+         System.out.println("First Name = "+car.getModel());
+         System.out.println("Last Name = "+car.getSeries());
+         System.out.println();
+      }
+      System.out.println("----------------------------------------------");
+      System.out.println(userService.carList("Tesla",01));
 
       context.close();
    }
